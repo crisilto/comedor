@@ -7,14 +7,14 @@ function getAlumnos() {
 
 // Función para obtener los datos de asistencia por fecha a través de AJAX
 function getAttendanceDataByDate(date) {
-    return fetch(`get_attendance_ajax.php?date=${date}`)
+    return fetch(`get_attendance_data_ajax.php?date=${date}`)
         .then(response => response.json())
         .catch(error => console.error('Error fetching attendance data:', error));
 }
 
 // Función para guardar los datos de asistencia a través de AJAX
 function saveAttendanceData(payload) {
-    return fetch('./save_asistencia_data.php', {
+    return fetch('./save_attendance_data.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

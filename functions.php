@@ -2,12 +2,12 @@
 include_once 'config.php';
 
 function getDatabase() {
-    // Usa las constantes definidas en config.php
+    //Usamos las constantes definidas en config.php
     $user = MYSQL_USER;
     $password = MYSQL_PASSWORD;
     $dbName = MYSQL_DATABASE_NAME;
     
-    // Crea una nueva conexión PDO
+    //Creamos una nueva conexión PDO
     $database = new PDO('mysql:host=localhost;dbname=' . $dbName, $user, $password);
     $database->query("set names utf8;");
     $database->setAttribute(PDO::ATTR_EMULATE_PREPARES, FALSE);
@@ -43,9 +43,16 @@ function updateAlumno($name, $dni, $cursoID, $cuentaBancaria, $posicionComedor, 
 
 function deleteAlumno($id) {
     $db = getDatabase();
-    $statement = $db->prepare("DELETE FROM alumnos WHERE ID = ?");
-    return $statement->execute([$id]);
+    
+    //Primero, eliminamos todos los registros de asistencia del alumno
+    $stmt = $db->prepare("DELETE FROM asistencia WHERE AlumnoID = ?");
+    $stmt->execute([$id]);
+    
+    //Luego, eliminamos al alumno
+    $stmt = $db->prepare("DELETE FROM alumnos WHERE ID = ?");
+    return $stmt->execute([$id]);
 }
+
 
 function getAlumnosWithAsistenciaCount($start, $end) {
     $db = getDatabase();
@@ -66,11 +73,17 @@ function saveAsistenciaData($date, $alumnos) {
     deleteAsistenciaDataByDate($date);
     $statement = $db->prepare("INSERT INTO asistencia(AlumnoID, Fecha, Asiste) VALUES (?, ?, ?)");
     $db->beginTransaction();
-    foreach ($alumnos as $alumno) {
-        $statement->execute([$alumno->id, $date, $alumno->status ? 1 : 0]);
+    try {
+        foreach ($alumnos as $alumno) {
+            $statement->execute([$alumno['ID'], $date, $alumno['status'] ? 1 : 0]);
+        }
+        $db->commit();
+        return true;
+    } catch (Exception $e) {
+        //Si algo sale mal, hacemos rollback y lanzamos la excepción
+        $db->rollback();
+        throw $e;
     }
-    $db->commit();
-    return true;
 }
 
 function deleteAsistenciaDataByDate($date) {

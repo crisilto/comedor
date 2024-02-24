@@ -1,9 +1,3 @@
--- Opcional: Creación de la base de datos comedor
--- Descomenta las siguientes líneas si necesitas crear la base de datos desde este script
--- DROP DATABASE IF EXISTS comedor;
--- CREATE DATABASE comedor;
--- USE comedor;
-
 -- Creación de la tabla Cursos
 CREATE TABLE IF NOT EXISTS Cursos (
     ID INT AUTO_INCREMENT PRIMARY KEY,
