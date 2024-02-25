@@ -7,8 +7,8 @@ body {
 }
 
 main {
-    min-height: calc(100vh - 100px); 
-    padding-bottom: 50px; 
+    min-height: calc(100vh - 100px);
+    padding-bottom: 50px;
 }
 
 header {
@@ -35,22 +35,22 @@ a {
 }
 
 #addAlumno {
-    display: block; 
+    display: block;
     margin: 0 auto;
     margin-bottom: 20px;
-    width: fit-content; 
-    text-align: center; 
-    color: #007bff; 
-    text-decoration: none; 
-    transition: color 0.3s ease; 
+    width: fit-content;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 #addAlumno:hover {
-    color: #0056b3; 
+    color: #0056b3;
 }
 
 a:hover {
-    color: #0056b3; 
+    color: #0056b3;
 }
 
 nav {
@@ -68,7 +68,7 @@ nav a {
 }
 
 nav a:hover {
-    color: #ffc107; 
+    color: #ffc107;
 }
 
 footer {
@@ -78,7 +78,12 @@ footer {
     text-align: center;
 }
 
-table {
+.styled-table {
+    font-size: inherit;
+}
+
+table,
+.styled-table {
     width: 80%;
     margin: 0 auto;
     border-collapse: collapse;
@@ -88,18 +93,23 @@ table {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td,
+.styled-table th,
+.styled-table td {
     padding: 12px 15px;
     border: 1px solid #dee2e6;
     text-align: left;
 }
 
-th {
+th,
+.styled-table th {
     background-color: #343a40;
     color: #ffffff;
 }
 
-form {
+form,
+#regFecha {
     margin-bottom: 20px;
     background-color: #ffffff;
     border-radius: 5px;
@@ -124,7 +134,8 @@ select {
     box-sizing: border-box;
 }
 
-button[type="submit"] {
+button[type="submit"],
+.styled-button {
     padding: 10px 20px;
     background-color: #007bff;
     color: #ffffff;
@@ -134,10 +145,66 @@ button[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"]:hover {
-    background-color: #0056b3; 
+button[type="submit"]:hover,
+.styled-button:hover {
+    background-color: #0056b3;
 }
 
-#regFecha, #attendanceForm{
+#regFecha,
+#attendanceForm,
+#editForm,
+#formAddAlumno {
     margin: 50px 100px;
 }
+
+.table-responsive {
+    display: none;
+  }
+
+@media screen and (min-width: 601px) and (max-width: 1040px) {
+    body {
+        font-size: 16px; 
+    }
+
+    h1 {
+        font-size: 28px; 
+    }
+
+    #addAlumno {
+        width: 100%; 
+    }}
+
+
+@media screen and (max-width: 940px) {
+    body {
+        font-size: 16px; 
+    }
+
+    h1 {
+        font-size: 28px; 
+    }
+
+    #addAlumno {
+        width: 100%;
+    }
+
+    .tbAlumn th,
+    .tbAlumn td {
+        display: block;
+        width: 100%;
+    }
+
+    .tdClass{
+        background-color: #343a4067;
+    }
+
+    .tbAlumn th {
+        display: none;
+    }
+
+    .tbAlumn td {
+        text-align: center;
+    }
+}
+
+

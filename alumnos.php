@@ -8,7 +8,7 @@ $alumnos = getAlumnos();
 <div>
     <h1>Alumnos</h1>
     <a href="alumno_add.php" id="addAlumno">Añadir nuevo alumno</a>
-    <table>
+    <table class="tbAlumn">
         <thead>
             <tr>
                 <th>ID</th>
@@ -24,7 +24,7 @@ $alumnos = getAlumnos();
         <tbody>
             <?php foreach ($alumnos as $alumno) { ?>
                 <tr>
-                    <td><?php echo $alumno->ID; ?></td>
+                    <td class="tdClass"><?php echo $alumno->ID; ?></td>
                     <td><?php echo $alumno->Nombre; ?></td>
                     <td><?php echo $alumno->DNI; ?></td>
                     <td><?php echo $alumno->CursoID; ?></td>

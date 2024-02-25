@@ -8,10 +8,10 @@
     <div id="regFecha">
         <label for="date">Fecha:</label>
         <input onchange="refreshAlumnosList()" id="date" type="date">
-        <button onclick="save()">Guardar</button>
+        <button onclick="save()" id="btnSave" class="styled-button">Guardar</button>
     </div>
     <div>
-        <table id="alumnos-table">
+        <table id="alumnos-table" class="styled-table">
             <thead>
                 <tr>
                     <th>Alumno</th>
@@ -103,7 +103,7 @@
                 const row = document.createElement('tr');
                 row.dataset.id = alumno.ID;
                 row.innerHTML = `
-                <td>${alumno.Nombre}</td> <!-- Asumiendo que el campo en la BD es Nombre -->
+                <td>${alumno.Nombre}</td> 
                 <td>
                     <select>
                         <option disabled value="${UNSET_STATUS}">--Seleccionar--</option>

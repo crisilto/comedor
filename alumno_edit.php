@@ -16,7 +16,7 @@ include_once "nav.php";
     <h1>Editar alumno</h1>
 </div>
 <div>
-    <form action="alumno_update.php" method="POST">
+    <form action="alumno_update.php" method="POST" id="editForm">
         <input type="hidden" name="id" value="<?php echo $alumno->ID; ?>">
 
         <div>
@@ -49,7 +49,7 @@ include_once "nav.php";
         </div>
 
         <div>
-            <button>Guardar</button>
+            <button class="styled-button">Guardar</button>
         </div>
     </form>
 </div>
