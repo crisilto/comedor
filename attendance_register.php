@@ -5,7 +5,7 @@
 
 <div>
     <h1>Registro de Asistencia</h1>
-    <div>
+    <div id="regFecha">
         <label for="date">Fecha:</label>
         <input onchange="refreshAlumnosList()" id="date" type="date">
         <button onclick="save()">Guardar</button>

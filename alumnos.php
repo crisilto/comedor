@@ -7,7 +7,7 @@ $alumnos = getAlumnos();
 
 <div>
     <h1>Alumnos</h1>
-    <a href="alumno_add.php">Añadir nuevo alumno</a>
+    <a href="alumno_add.php" id="addAlumno">Añadir nuevo alumno</a>
     <table>
         <thead>
             <tr>
